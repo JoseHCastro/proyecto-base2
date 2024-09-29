@@ -48,4 +48,22 @@ class HomeController extends Controller
 
         return view('estudiantes_inscritos', compact('resultados', 'labels', 'data'));
     }
+
+    public function por_localidad()
+    {
+
+        $resultados = DB::table('Carrera as c')
+            ->join('Inscripcion as i', 'c.Carrera_ID', '=', 'i.Carrera_ID')
+            ->select('c.Localidad', DB::raw('SUM(i.Total_Inscritos) as Total_Inscritos'))
+            ->groupBy('c.Localidad')
+            ->orderBy(DB::raw('SUM(i.Total_Inscritos)'), 'DESC') // Ordenar por Total_Inscritos descendente
+            ->get();
+
+
+        $labels = $resultados->pluck('Localidad')->toArray();
+        $data = $resultados->pluck('Total_Inscritos')->toArray();
+
+
+        return view('por_localidad', compact('resultados', 'labels', 'data'));
+    }
 }

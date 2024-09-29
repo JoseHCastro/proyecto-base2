@@ -322,12 +322,20 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text' => 'Por Localidad',
+            'url' => 'por-localidad',
+            'icon' => 'far fa-fw fa-file',
+            'label' => 4,
+            'label_color' => 'success',
+        ],
+        [
             'text' => 'pages',
             'url' => 'admin/pages',
             'icon' => 'far fa-fw fa-file',
             'label' => 4,
             'label_color' => 'success',
         ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
